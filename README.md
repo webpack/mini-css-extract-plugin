@@ -46,7 +46,7 @@ or
 pnpm add -D mini-css-extract-plugin
 ```
 
-It's recommended to combine `mini-css-extract-plugin` with the [`css-loader`](https://github.com/webpack-contrib/css-loader)
+It's recommended to combine `mini-css-extract-plugin` with the [`css-loader`](https://github.com/webpack/css-loader)
 
 Then add the loader and the plugin to your `webpack` configuration. For example:
 
@@ -88,7 +88,7 @@ module.exports = {
 
 > [!WARNING]
 >
-> Source maps works only for `source-map`/`nosources-source-map`/`hidden-nosources-source-map`/`hidden-source-map` values because CSS only supports source maps with the `sourceMappingURL` comment (i.e. `//# sourceMappingURL=style.css.map`). If you need set `devtool` to another value you can enable source maps generation for extracted CSS using [`sourceMap: true`](https://github.com/webpack-contrib/css-loader#sourcemap) for `css-loader`.
+> Source maps works only for `source-map`/`nosources-source-map`/`hidden-nosources-source-map`/`hidden-source-map` values because CSS only supports source maps with the `sourceMappingURL` comment (i.e. `//# sourceMappingURL=style.css.map`). If you need set `devtool` to another value you can enable source maps generation for extracted CSS using [`sourceMap: true`](https://github.com/webpack/css-loader#sourcemap) for `css-loader`.
 
 ## Options
 
@@ -611,7 +611,7 @@ module.exports = {
 ### Recommended
 
 For `production` builds, it is recommended to extract the CSS from your bundle being able to use parallel loading of CSS/JS resources later on. This can be achieved by using the `mini-css-extract-plugin`, because it creates separate css files.
-For `development` mode (including `webpack-dev-server`) you can use [style-loader](https://github.com/webpack-contrib/style-loader), because it injects CSS into the DOM using multiple <style></style> and works faster.
+For `development` mode (including `webpack-dev-server`) you can use [style-loader](https://github.com/webpack/style-loader), because it injects CSS into the DOM using multiple <style></style> and works faster.
 
 > Important: Do not use `style-loader` and `mini-css-extract-plugin` together.
 
@@ -1266,7 +1266,7 @@ MiniCssExtractPlugin.getCompilationHooks(compilation).beforeTagInsert.tap(
   (source, varNames) =>
     Template.asString([
       source,
-      `${varNames.tag}.setAttribute("href", "https://github.com/webpack-contrib/mini-css-extract-plugin");`,
+      `${varNames.tag}.setAttribute("href", "https://github.com/webpack/mini-css-extract-plugin");`,
     ]),
 );
 ```
@@ -1286,10 +1286,10 @@ If you're new here, please take a moment to review our contributing guidelines b
 [npm-url]: https://npmjs.com/package/mini-css-extract-plugin
 [node]: https://img.shields.io/node/v/mini-css-extract-plugin.svg
 [node-url]: https://nodejs.org
-[tests]: https://github.com/webpack-contrib/mini-css-extract-plugin/workflows/mini-css-extract-plugin/badge.svg
-[tests-url]: https://github.com/webpack-contrib/mini-css-extract-plugin/actions
-[cover]: https://codecov.io/gh/webpack-contrib/mini-css-extract-plugin/branch/master/graph/badge.svg
-[cover-url]: https://codecov.io/gh/webpack-contrib/mini-css-extract-plugin
+[tests]: https://github.com/webpack/mini-css-extract-plugin/workflows/mini-css-extract-plugin/badge.svg
+[tests-url]: https://github.com/webpack/mini-css-extract-plugin/actions
+[cover]: https://codecov.io/gh/webpack/mini-css-extract-plugin/branch/main/graph/badge.svg
+[cover-url]: https://codecov.io/gh/webpack/mini-css-extract-plugin
 [discussion]: https://img.shields.io/github/discussions/webpack/webpack
 [discussion-url]: https://github.com/webpack/webpack/discussions
 [size]: https://packagephobia.now.sh/badge?p=mini-css-extract-plugin

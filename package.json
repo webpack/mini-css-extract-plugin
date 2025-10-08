@@ -8,9 +8,9 @@
     "extract",
     "hmr"
   ],
-  "homepage": "https://github.com/webpack-contrib/mini-css-extract-plugin",
-  "bugs": "https://github.com/webpack-contrib/mini-css-extract-plugin/issues",
-  "repository": "webpack-contrib/mini-css-extract-plugin",
+  "homepage": "https://github.com/webpack/mini-css-extract-plugin",
+  "bugs": "https://github.com/webpack/mini-css-extract-plugin/issues",
+  "repository": "webpack/mini-css-extract-plugin",
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/webpack"
@@ -30,7 +30,7 @@
     "build:code": "cross-env NODE_ENV=production babel src -d dist --copy-files",
     "build": "npm-run-all -p \"build:**\"",
     "clean": "del-cli dist",
-    "commitlint": "commitlint --from=master",
+    "commitlint": "commitlint --from=main",
     "lint:prettier": "prettier \"{**/*,*}.{js,json,md,yml,css,ts}\" --list-different",
     "lint:code": "eslint --cache .",
     "lint:spelling": "cspell \"**/*.*\"",

@@ -111,7 +111,7 @@ function pitch(request) {
   if (!optionsFromPlugin) {
     callback(
       new Error(
-        "You forgot to add 'mini-css-extract-plugin' plugin (i.e. `{ plugins: [new MiniCssExtractPlugin()] }`), please read https://github.com/webpack-contrib/mini-css-extract-plugin#getting-started",
+        "You forgot to add 'mini-css-extract-plugin' plugin (i.e. `{ plugins: [new MiniCssExtractPlugin()] }`), please read https://github.com/webpack/mini-css-extract-plugin#getting-started",
       ),
     );
 

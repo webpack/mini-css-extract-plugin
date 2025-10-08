@@ -51,7 +51,7 @@ describe("hooks", () => {
                 ).beforeTagInsert.tap("changeHref", (source, varNames) =>
                   Template.asString([
                     source,
-                    `${varNames.tag}.setAttribute("href", "https://github.com/webpack-contrib/mini-css-extract-plugin");`,
+                    `${varNames.tag}.setAttribute("href", "https://github.com/webpack/mini-css-extract-plugin");`,
                   ]),
                 );
               });
@@ -65,7 +65,7 @@ describe("hooks", () => {
       const [tag] = dom.window.document.head.getElementsByTagName("link");
       expect(tag.getAttribute("integrity")).toBe("sriHashes[chunkId]");
       expect(tag.getAttribute("href")).toBe(
-        "https://github.com/webpack-contrib/mini-css-extract-plugin",
+        "https://github.com/webpack/mini-css-extract-plugin",
       );
     });
   });

@@ -885,7 +885,7 @@ module.exports = {
 
 ### Minimizing For Production
 
-To minify the output, use a plugin like [css-minimizer-webpack-plugin](https://github.com/webpack-contrib/css-minimizer-webpack-plugin).
+To minify the output, use a plugin like [css-minimizer-webpack-plugin](https://github.com/webpack/css-minimizer-webpack-plugin).
 
 **webpack.config.js**
 

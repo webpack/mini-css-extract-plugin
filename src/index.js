@@ -56,7 +56,7 @@ const {
 
 /**
  * @typedef {object} NormalizedPluginOptions
- * @property {Filename} filename filename
+ * @property {Filename=} filename filename
  * @property {ChunkFilename=} chunkFilename chunk filename
  * @property {boolean} ignoreOrder true when need to ignore order, otherwise false
  * @property {string | ((linkTag: HTMLLinkElement) => void)=} insert a link insert place or a custom insert function
@@ -568,7 +568,6 @@ class MiniCssExtractPlugin {
      * @type {NormalizedPluginOptions}
      */
     this.options = {
-      filename: DEFAULT_FILENAME,
       ignoreOrder: false,
       // TODO remove in the next major release
       experimentalUseImportModule: undefined,
@@ -591,39 +590,49 @@ class MiniCssExtractPlugin {
           : options.linkType,
       attributes: options.attributes,
     };
-
-    if (!this.options.chunkFilename) {
-      const { filename } = this.options;
-
-      if (typeof filename !== "function") {
-        const hasName = /** @type {string} */ (filename).includes("[name]");
-        const hasId = /** @type {string} */ (filename).includes("[id]");
-        const hasChunkHash =
-          /** @type {string} */
-          (filename).includes("[chunkhash]");
-        const hasContentHash =
-          /** @type {string} */
-          (filename).includes("[contenthash]");
-
-        // Anything changing depending on chunk is fine
-        if (hasChunkHash || hasContentHash || hasName || hasId) {
-          this.options.chunkFilename = filename;
-        } else {
-          // Otherwise prefix "[id]." in front of the basename to make it changing
-          this.options.chunkFilename =
-            /** @type {string} */
-            (filename).replace(/(^|\/)([^/]*(?:\?|$))/, "$1[id].$2");
-        }
-      } else {
-        this.options.chunkFilename = "[id].css";
-      }
-    }
   }
 
   /**
    * @param {Compiler} compiler compiler
    */
   apply(compiler) {
+    // Finally normalize filenames based on compiler options
+    const normalizedFilename =
+      this.options.filename ||
+      compiler.options.output.cssFilename ||
+      DEFAULT_FILENAME;
+    let normalizedChunkFilename =
+      this.options.chunkFilename || compiler.options.output.cssChunkFilename;
+
+    if (!normalizedChunkFilename) {
+      if (typeof normalizedFilename !== "function") {
+        const hasName = /** @type {string} */ (normalizedFilename).includes(
+          "[name]",
+        );
+        const hasId = /** @type {string} */ (normalizedFilename).includes(
+          "[id]",
+        );
+        const hasChunkHash =
+          /** @type {string} */
+          (normalizedFilename).includes("[chunkhash]");
+        const hasContentHash =
+          /** @type {string} */
+          (normalizedFilename).includes("[contenthash]");
+
+        // Anything changing depending on chunk is fine
+        if (hasChunkHash || hasContentHash || hasName || hasId) {
+          normalizedChunkFilename = normalizedFilename;
+        } else {
+          // Otherwise prefix "[id]." in front of the basename to make it changing
+          normalizedChunkFilename =
+            /** @type {string} */
+            (normalizedFilename).replace(/(^|\/)([^/]*(?:\?|$))/, "$1[id].$2");
+        }
+      } else {
+        normalizedChunkFilename = "[id].css";
+      }
+    }
+
     const { webpack } = compiler;
 
     if (
@@ -743,8 +752,8 @@ class MiniCssExtractPlugin {
             /** @type {string} */
             (
               chunk.canBeInitial()
-                ? this.options.filename
-                : this.options.chunkFilename
+                ? normalizedFilename
+                : normalizedChunkFilename
             );
 
           if (renderedModules.length > 0) {
@@ -1215,8 +1224,8 @@ class MiniCssExtractPlugin {
         enabledChunks.add(chunk);
 
         if (
-          typeof this.options.chunkFilename === "string" &&
-          /\[(full)?hash(:\d+)?\]/.test(this.options.chunkFilename)
+          typeof normalizedChunkFilename === "string" &&
+          /\[(full)?hash(:\d+)?\]/.test(normalizedChunkFilename)
         ) {
           set.add(RuntimeGlobals.getFullHash);
         }
@@ -1239,8 +1248,8 @@ class MiniCssExtractPlugin {
               }
 
               return referencedChunk.canBeInitial()
-                ? /** @type {Filename} */ (this.options.filename)
-                : /** @type {ChunkFilename} */ (this.options.chunkFilename);
+                ? /** @type {Filename} */ (normalizedFilename)
+                : /** @type {ChunkFilename} */ (normalizedChunkFilename);
             },
             set.has(RuntimeGlobals.hmrDownloadUpdateHandlers),
           ),

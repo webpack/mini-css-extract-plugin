@@ -168,7 +168,7 @@ describe("emit option", () => {
       }
     }
 
-    const outputPath = path.resolve(__dirname, "./js/cache-memory");
+    const outputPath = path.resolve(__dirname, "./js/cache-memory-1");
     const webpackConfig = {
       mode: "development",
       context: path.resolve(__dirname, "./fixtures"),
@@ -272,7 +272,7 @@ describe("emit option", () => {
   });
 
   it('should work with the "memory" cache and disabled "emit" option', async () => {
-    const outputPath = path.resolve(__dirname, "./js/cache-memory");
+    const outputPath = path.resolve(__dirname, "./js/cache-memory-2");
     const webpackConfig = {
       mode: "development",
       context: path.resolve(__dirname, "fixtures"),
@@ -380,7 +380,7 @@ describe("emit option", () => {
       }
     }
 
-    const outputPath = path.resolve(__dirname, "./js/cache-memory");
+    const outputPath = path.resolve(__dirname, "./js/cache-memory-3");
     const modifyAsset = path.resolve(__dirname, "fixtures", "style-url.css");
     const modifyAssetContent = fs.readFileSync(modifyAsset);
     const webpackConfig = {

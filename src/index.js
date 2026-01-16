@@ -89,7 +89,7 @@ const CODE_GENERATION_RESULT = {
   runtimeRequirements: new Set(),
 };
 
-// eslint-disable-next-line jsdoc/no-restricted-syntax
+// eslint-disable-next-line jsdoc/reject-any-type
 /** @typedef {{ context: string | null, identifier: string, identifierIndex: number, content: Buffer, sourceMap?: Buffer, media?: string, supports?: string, layer?: any, assetsInfo?: Map<string, AssetInfo>, assets?: { [key: string]: Source }}} CssModuleDependency */
 /** @typedef {Module & { content: Buffer, media?: string, sourceMap?: Buffer, supports?: string, layer?: string, assets?: { [key: string]: Source }, assetsInfo?: Map<string, AssetInfo> }} CssModule */
 /** @typedef {{ new(dependency: CssModuleDependency): CssModule }} CssModuleConstructor */

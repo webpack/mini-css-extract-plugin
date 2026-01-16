@@ -4,7 +4,7 @@ const path = require("path");
 /** @typedef {import("webpack").Compilation} Compilation */
 /** @typedef {import("webpack").Module} Module */
 
-// eslint-disable-next-line jsdoc/no-restricted-syntax
+// eslint-disable-next-line jsdoc/reject-any-type
 /** @typedef {import("webpack").LoaderContext<any>} LoaderContext */
 
 /**
@@ -36,7 +36,7 @@ function findModuleById(compilation, id) {
   return null;
 }
 
-// eslint-disable-next-line jsdoc/no-restricted-syntax
+/* eslint-disable jsdoc/reject-any-type */
 /**
  * @param {LoaderContext} loaderContext loader context
  * @param {string | Buffer} code code
@@ -54,6 +54,7 @@ function evalModuleCode(loaderContext, code, filename) {
 
   return module.exports;
 }
+/* eslint-enable jsdoc/reject-any-type */
 
 /**
  * @param {string} a a
@@ -203,7 +204,7 @@ function getUndoPath(filename, outputPath, enforceRelative) {
       : append;
 }
 
-// eslint-disable-next-line jsdoc/no-restricted-syntax
+/* eslint-disable jsdoc/reject-function-type */
 /**
  * @param {string | Function} value local
  * @returns {string} stringified local
@@ -211,6 +212,7 @@ function getUndoPath(filename, outputPath, enforceRelative) {
 function stringifyLocal(value) {
   return typeof value === "function" ? value.toString() : JSON.stringify(value);
 }
+/* eslint-enable jsdoc/reject-function-type */
 
 /**
  * @param {string} str string

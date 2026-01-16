@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/webpack/mini-css-extract-plugin/compare/v2.9.4...v2.10.0) (2026-01-16)
+
+
+### Features
+
+* respect `output.cssFilename` and `output.cssChunkFilename` ([#1151](https://github.com/webpack/mini-css-extract-plugin/issues/1151)) ([54f775d](https://github.com/webpack/mini-css-extract-plugin/commit/54f775ddac6ea365b9023ab0624f8219695371b3))
+
+
+### Bug Fixes
+
+* prevent generation of a contentHash for a chunk when the set of css modules is of size 0 ([#1154](https://github.com/webpack/mini-css-extract-plugin/issues/1154)) ([4e4a95d](https://github.com/webpack/mini-css-extract-plugin/commit/4e4a95d16431bca442b7ac5d90c887142e3ce117))
+
 ### [2.9.4](https://github.com/webpack-contrib/mini-css-extract-plugin/compare/v2.9.3...v2.9.4) (2025-08-11)
 
 

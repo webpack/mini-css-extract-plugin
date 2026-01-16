@@ -142,7 +142,7 @@ declare namespace MiniCssExtractPlugin {
  */
 /**
  * @typedef {object} NormalizedPluginOptions
- * @property {Filename} filename filename
+ * @property {Filename=} filename filename
  * @property {ChunkFilename=} chunkFilename chunk filename
  * @property {boolean} ignoreOrder true when need to ignore order, otherwise false
  * @property {string | ((linkTag: HTMLLinkElement) => void)=} insert a link insert place or a custom insert function
@@ -239,7 +239,7 @@ type NormalizedPluginOptions = {
   /**
    * filename
    */
-  filename: Filename;
+  filename?: Filename | undefined;
   /**
    * chunk filename
    */

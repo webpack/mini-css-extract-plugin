@@ -13,7 +13,7 @@ const noDocument = typeof document === "undefined";
 
 const { forEach } = Array.prototype;
 
-// eslint-disable-next-line jsdoc/no-restricted-syntax
+/* eslint-disable jsdoc/reject-function-type */
 /**
  * @param {Function} fn any function
  * @param {number} time time
@@ -38,6 +38,7 @@ function debounce(fn, time) {
     timeout = setTimeout(functionCall, time);
   };
 }
+/* eslint-enable jsdoc/reject-function-type */
 
 /**
  * @returns {void}

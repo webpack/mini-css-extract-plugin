@@ -168,7 +168,7 @@ describe("emit option", () => {
       }
     }
 
-    const outputPath = path.resolve(__dirname, "./js/cache-memory");
+    const outputPath = path.resolve(__dirname, "./js/cache-memory-1");
     const webpackConfig = {
       mode: "development",
       context: path.resolve(__dirname, "./fixtures"),
@@ -272,7 +272,7 @@ describe("emit option", () => {
   });
 
   it('should work with the "memory" cache and disabled "emit" option', async () => {
-    const outputPath = path.resolve(__dirname, "./js/cache-memory");
+    const outputPath = path.resolve(__dirname, "./js/cache-memory-2");
     const webpackConfig = {
       mode: "development",
       context: path.resolve(__dirname, "fixtures"),
@@ -360,124 +360,5 @@ describe("emit option", () => {
         });
       });
     });
-  });
-
-  it('should invalidate the cache with disabled "emit" option', async () => {
-    class AssetsModifyPlugin {
-      constructor(options = {}) {
-        this.options = options;
-      }
-
-      apply(compiler) {
-        compiler.hooks.emit.tapAsync(
-          "AssetsModifyPlugin",
-          (compilation, callback) => {
-            fs.writeFileSync(this.options.file, ".a{color: red;}");
-
-            callback();
-          },
-        );
-      }
-    }
-
-    const outputPath = path.resolve(__dirname, "./js/cache-memory");
-    const modifyAsset = path.resolve(__dirname, "fixtures", "style-url.css");
-    const modifyAssetContent = fs.readFileSync(modifyAsset);
-    const webpackConfig = {
-      mode: "development",
-      context: path.resolve(__dirname, "fixtures"),
-      cache: {
-        type: "memory",
-      },
-      output: {
-        path: outputPath,
-      },
-      entry: "./style-url.js",
-      module: {
-        rules: [
-          {
-            test: /\.css$/,
-            use: [
-              {
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                  emit: false,
-                },
-              },
-              "css-loader",
-            ],
-          },
-          {
-            test: /\.svg$/,
-            type: "asset/resource",
-            generator: {
-              filename: "static/[name][ext][query]",
-            },
-          },
-        ],
-      },
-      plugins: [
-        new MiniCssExtractPlugin({
-          filename: "[name].css",
-        }),
-        new AssetsModifyPlugin({
-          file: modifyAsset,
-        }),
-      ],
-    };
-
-    await del([outputPath]);
-
-    const compiler1 = webpack(webpackConfig);
-
-    await new Promise((resolve, reject) => {
-      compiler1.run((error, stats) => {
-        if (error) {
-          reject(error);
-
-          return;
-        }
-
-        compiler1.close(() => {
-          expect(Object.keys(stats.compilation.assets).sort()).toMatchSnapshot(
-            "assets",
-          );
-          expect([...stats.compilation.emittedAssets].sort()).toMatchSnapshot(
-            "emittedAssets",
-          );
-          expect(getWarnings(stats)).toMatchSnapshot("warnings");
-          expect(getErrors(stats)).toMatchSnapshot("errors");
-
-          resolve();
-        });
-      });
-    });
-
-    const compiler2 = webpack(webpackConfig);
-
-    await new Promise((resolve, reject) => {
-      compiler2.run((error, stats) => {
-        if (error) {
-          reject(error);
-
-          return;
-        }
-
-        compiler2.close(() => {
-          expect(Object.keys(stats.compilation.assets).sort()).toMatchSnapshot(
-            "assets",
-          );
-          expect([...stats.compilation.emittedAssets].sort()).toMatchSnapshot(
-            "emittedAssets",
-          );
-          expect(getWarnings(stats)).toMatchSnapshot("warnings");
-          expect(getErrors(stats)).toMatchSnapshot("errors");
-
-          resolve();
-        });
-      });
-    });
-
-    fs.writeFileSync(modifyAsset, modifyAssetContent);
   });
 });

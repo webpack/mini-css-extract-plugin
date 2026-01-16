@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 /* global document */
-/* eslint-env browser */
 
 import hotModuleReplacement from "../src/hmr/hotModuleReplacement";
 import { hotLoader } from "../src/loader";

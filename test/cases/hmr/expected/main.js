@@ -1,11 +1,11 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "../../../src/hmr/hotModuleReplacement.js":
+/***/ "../../../src/hmr/hotModuleReplacement.js"
 /*!************************************************!*\
   !*** ../../../src/hmr/hotModuleReplacement.js ***!
   \************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+(module, __unused_webpack_exports, __webpack_require__) {
 
 /* global document */
 /*
@@ -22,7 +22,7 @@ const noDocument = typeof document === "undefined";
 
 const { forEach } = Array.prototype;
 
-// eslint-disable-next-line jsdoc/no-restricted-syntax
+/* eslint-disable jsdoc/reject-function-type */
 /**
  * @param {Function} fn any function
  * @param {number} time time
@@ -47,6 +47,7 @@ function debounce(fn, time) {
     timeout = setTimeout(functionCall, time);
   };
 }
+/* eslint-enable jsdoc/reject-function-type */
 
 /**
  * @returns {void}
@@ -310,13 +311,13 @@ module.exports = function (moduleId, options) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ "../../../src/hmr/normalize-url.js":
+/***/ "../../../src/hmr/normalize-url.js"
 /*!*****************************************!*\
   !*** ../../../src/hmr/normalize-url.js ***!
   \*****************************************/
-/***/ ((module) => {
+(module) {
 
 /**
  * @param {string[]} pathComponents path components
@@ -367,13 +368,13 @@ module.exports = function normalizeUrl(urlString) {
 };
 
 
-/***/ }),
+/***/ },
 
-/***/ "./index.css":
+/***/ "./index.css"
 /*!*******************!*\
   !*** ./index.css ***!
   \*******************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
+(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -402,7 +403,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   
 
-/***/ })
+/***/ }
 
 /******/ 	});
 /************************************************************************/
@@ -416,6 +417,12 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			if (cachedModule.error !== undefined) throw cachedModule.error;
 /******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Check if module exists (development only)
+/******/ 		if (__webpack_modules__[moduleId] === undefined) {
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
@@ -821,7 +828,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 									update.m,
 /******/ 									promises,
 /******/ 									currentUpdateApplyHandlers,
-/******/ 									updatedModules
+/******/ 									updatedModules,
+/******/ 									update.css
 /******/ 								);
 /******/ 								return promises;
 /******/ 							}, [])

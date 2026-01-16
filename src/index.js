@@ -795,7 +795,7 @@ class MiniCssExtractPlugin {
           compilation.runtimeTemplate.requestShortener,
         );
 
-        if (modules) {
+        if (modules.size > 0) {
           const { hashFunction, hashDigest, hashDigestLength } = outputOptions;
           const { createHash } = compiler.webpack.util;
           const hash = createHash(/** @type {string} */ (hashFunction));

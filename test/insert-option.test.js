@@ -1,4 +1,3 @@
-/* global document */
 import path from "path";
 
 import MiniCssExtractPlugin from "../src";
@@ -83,8 +82,7 @@ describe("insert option", () => {
         plugins: [
           new MiniCssExtractPlugin({
             filename: "[name].css",
-            // eslint-disable-next-line
-            insert: function (linkTag) {
+            insert(linkTag) {
               const reference = document.querySelector("#existing-style");
               if (reference) {
                 reference.parentNode.insertBefore(linkTag, reference);

@@ -421,12 +421,6 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			if (cachedModule.error !== undefined) throw cachedModule.error;
 /******/ 			return cachedModule.exports;
 /******/ 		}
-/******/ 		// Check if module exists (development only)
-/******/ 		if (__webpack_modules__[moduleId] === undefined) {
-/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
-/******/ 			e.code = 'MODULE_NOT_FOUND';
-/******/ 			throw e;
-/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
 /******/ 			id: moduleId,
@@ -438,6 +432,12 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		try {
 /******/ 			var execOptions = { id: moduleId, module: module, factory: __webpack_modules__[moduleId], require: __webpack_require__ };
 /******/ 			__webpack_require__.i.forEach(function(handler) { handler(execOptions); });
+/******/ 			if (!execOptions.factory) {
+/******/ 				delete __webpack_module_cache__[moduleId];
+/******/ 				var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 				e.code = 'MODULE_NOT_FOUND';
+/******/ 				throw e;
+/******/ 			}
 /******/ 			module = execOptions.module;
 /******/ 			execOptions.factory.call(module.exports, module, module.exports, execOptions.require);
 /******/ 		} catch(e) {

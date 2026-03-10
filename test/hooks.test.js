@@ -25,7 +25,7 @@ describe("hooks", () => {
           }),
           {
             /**
-             * @param {import('webpack').Compiler} compiler compiler
+             * @param {import("webpack").Compiler} compiler compiler
              */
             apply: (compiler) => {
               compiler.hooks.compilation.tap("sri", (compilation) => {
@@ -42,7 +42,7 @@ describe("hooks", () => {
           },
           {
             /**
-             * @param {import('webpack').Compiler} compiler compiler
+             * @param {import("webpack").Compiler} compiler compiler
              */
             apply: (compiler) => {
               compiler.hooks.compilation.tap("href", (compilation) => {

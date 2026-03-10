@@ -233,7 +233,7 @@ const toSimpleString = (str) => {
 const quoteMeta = (str) => str.replace(/[-[\]\\/{}()*+?.^$|]/g, "\\$&");
 
 /**
- * @param {Array<string>} items items
+ * @param {string[]} items items
  * @returns {string} common prefix
  */
 const getCommonPrefix = (items) => {
@@ -253,7 +253,7 @@ const getCommonPrefix = (items) => {
 };
 
 /**
- * @param {Array<string>} items items
+ * @param {string[]} items items
  * @returns {string} common suffix
  */
 const getCommonSuffix = (items) => {
@@ -279,11 +279,11 @@ const getCommonSuffix = (items) => {
 /**
  * @param {Set<string>} itemsSet items set
  * @param {(str: string) => string | false} getKey get key function
- * @param {(str: Array<string>) => boolean} condition condition
- * @returns {Array<Array<string>>} list of common items
+ * @param {(str: string[]) => boolean} condition condition
+ * @returns {string[][]} list of common items
  */
 const popCommonItems = (itemsSet, getKey, condition) => {
-  /** @type {Map<string, Array<string>>} */
+  /** @type {Map<string, string[]>} */
   const map = new Map();
 
   for (const item of itemsSet) {
@@ -291,7 +291,7 @@ const popCommonItems = (itemsSet, getKey, condition) => {
     if (key) {
       let list = map.get(key);
       if (list === undefined) {
-        /** @type {Array<string>} */
+        /** @type {string[]} */
         list = [];
         map.set(key, list);
       }
@@ -299,7 +299,7 @@ const popCommonItems = (itemsSet, getKey, condition) => {
     }
   }
 
-  /** @type {Array<Array<string>>} */
+  /** @type {string[][]} */
   const result = [];
 
   for (const list of map.values()) {
@@ -315,7 +315,7 @@ const popCommonItems = (itemsSet, getKey, condition) => {
 };
 
 /**
- * @param {Array<string>} itemsArr array of items
+ * @param {string[]} itemsArr array of items
  * @returns {string} regexp
  */
 const itemsToRegexp = (itemsArr) => {
@@ -323,7 +323,7 @@ const itemsToRegexp = (itemsArr) => {
     return quoteMeta(itemsArr[0]);
   }
 
-  /** @type {Array<string>} */
+  /** @type {string[]} */
   const finishedItems = [];
 
   // merge single char items: (a|b|c|d|ef) => ([abcd]|ef)

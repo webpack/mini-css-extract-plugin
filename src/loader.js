@@ -25,7 +25,7 @@ const MiniCssExtractPlugin = require("./index");
 /** @typedef {import("./index.js").LoaderOptions} LoaderOptions */
 
 // eslint-disable-next-line jsdoc/reject-function-type
-/** @typedef {{[key: string]: string | Function }} Locals */
+/** @typedef {{ [key: string]: string | Function }} Locals */
 
 // eslint-disable-next-line jsdoc/reject-any-type
 /** @typedef {any} EXPECTED_ANY */

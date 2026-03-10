@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.1](https://github.com/webpack/mini-css-extract-plugin/compare/v2.10.0...v2.10.1) (2026-03-10)
+
+
+### Bug Fixes
+
+* handle null module.layer in renderContentAsset ([#1159](https://github.com/webpack/mini-css-extract-plugin/issues/1159)) ([0233180](https://github.com/webpack/mini-css-extract-plugin/commit/0233180faf7b2a267da60134852877bc65859b7d))
+
 ## [2.10.0](https://github.com/webpack/mini-css-extract-plugin/compare/v2.9.4...v2.10.0) (2026-01-16)
 
 

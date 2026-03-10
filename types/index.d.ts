@@ -136,7 +136,7 @@ declare namespace MiniCssExtractPlugin {
  * @property {boolean=} ignoreOrder true when need to ignore order, otherwise false
  * @property {string | ((linkTag: HTMLLinkElement) => void)=} insert link insert place or a custom insert function
  * @property {Record<string, string>=} attributes link attributes
- * @property {string | false | 'text/css'=} linkType value of a link type attribute
+ * @property {string | false | "text/css"=} linkType value of a link type attribute
  * @property {boolean=} runtime true when need to generate runtime code, otherwise false
  * @property {boolean=} experimentalUseImportModule true when need to use `experimentalUseImportModule` API, otherwise false
  */
@@ -147,14 +147,14 @@ declare namespace MiniCssExtractPlugin {
  * @property {boolean} ignoreOrder true when need to ignore order, otherwise false
  * @property {string | ((linkTag: HTMLLinkElement) => void)=} insert a link insert place or a custom insert function
  * @property {Record<string, string>=} attributes link attributes
- * @property {string | false | 'text/css'=} linkType value of a link type attribute
+ * @property {string | false | "text/css"=} linkType value of a link type attribute
  * @property {boolean} runtime true when need to generate runtime code, otherwise false
  * @property {boolean=} experimentalUseImportModule true when need to use `experimentalUseImportModule` API, otherwise false
  */
 /**
  * @typedef {object} RuntimeOptions
  * @property {string | ((linkTag: HTMLLinkElement) => void)=} insert a link insert place or a custom insert function
- * @property {string | false | 'text/css'} linkType value of a link type attribute
+ * @property {string | false | "text/css"} linkType value of a link type attribute
  * @property {Record<string, string>=} attributes link attributes
  */
 declare const pluginName: "mini-css-extract-plugin";

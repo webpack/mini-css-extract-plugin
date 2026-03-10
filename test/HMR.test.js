@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-/* global document */
 
 import hotModuleReplacement from "../src/hmr/hotModuleReplacement";
 import { hotLoader } from "../src/loader";
@@ -26,9 +25,9 @@ describe("HMR", () => {
   let consoleMock = null;
 
   beforeEach(() => {
-    consoleMock = jest.spyOn(console, "log").mockImplementation(() => () => {});
+    consoleMock = jest.spyOn(console, "log").mockReturnValue(() => {});
 
-    jest.spyOn(Date, "now").mockImplementation(() => 1479427200000);
+    jest.spyOn(Date, "now").mockReturnValue(1479427200000);
 
     document.head.innerHTML = '<link rel="stylesheet" href="/dist/main.css" />';
     document.body.innerHTML = '<script src="/dist/main.js"></script>';
@@ -80,7 +79,7 @@ describe("HMR", () => {
 
       expect(links[1].isLoaded).toBe(true);
 
-      jest.spyOn(Date, "now").mockImplementation(() => 1479427200001);
+      jest.spyOn(Date, "now").mockReturnValue(1479427200001);
 
       const update2 = hotModuleReplacement("./src/style.css", {});
 

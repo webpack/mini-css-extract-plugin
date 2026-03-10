@@ -49,7 +49,7 @@ const {
  * @property {boolean=} ignoreOrder true when need to ignore order, otherwise false
  * @property {string | ((linkTag: HTMLLinkElement) => void)=} insert link insert place or a custom insert function
  * @property {Record<string, string>=} attributes link attributes
- * @property {string | false | 'text/css'=} linkType value of a link type attribute
+ * @property {string | false | "text/css"=} linkType value of a link type attribute
  * @property {boolean=} runtime true when need to generate runtime code, otherwise false
  * @property {boolean=} experimentalUseImportModule true when need to use `experimentalUseImportModule` API, otherwise false
  */
@@ -61,7 +61,7 @@ const {
  * @property {boolean} ignoreOrder true when need to ignore order, otherwise false
  * @property {string | ((linkTag: HTMLLinkElement) => void)=} insert a link insert place or a custom insert function
  * @property {Record<string, string>=} attributes link attributes
- * @property {string | false | 'text/css'=} linkType value of a link type attribute
+ * @property {string | false | "text/css"=} linkType value of a link type attribute
  * @property {boolean} runtime true when need to generate runtime code, otherwise false
  * @property {boolean=} experimentalUseImportModule true when need to use `experimentalUseImportModule` API, otherwise false
  */
@@ -69,7 +69,7 @@ const {
 /**
  * @typedef {object} RuntimeOptions
  * @property {string | ((linkTag: HTMLLinkElement) => void)=} insert a link insert place or a custom insert function
- * @property {string | false | 'text/css'} linkType value of a link type attribute
+ * @property {string | false | "text/css"} linkType value of a link type attribute
  * @property {Record<string, string>=} attributes link attributes
  */
 
@@ -90,12 +90,12 @@ const CODE_GENERATION_RESULT = {
 };
 
 // eslint-disable-next-line jsdoc/reject-any-type
-/** @typedef {{ context: string | null, identifier: string, identifierIndex: number, content: Buffer, sourceMap?: Buffer, media?: string, supports?: string, layer?: any, assetsInfo?: Map<string, AssetInfo>, assets?: { [key: string]: Source }}} CssModuleDependency */
+/** @typedef {{ context: string | null, identifier: string, identifierIndex: number, content: Buffer, sourceMap?: Buffer, media?: string, supports?: string, layer?: any, assetsInfo?: Map<string, AssetInfo>, assets?: { [key: string]: Source } }} CssModuleDependency */
 /** @typedef {Module & { content: Buffer, media?: string, sourceMap?: Buffer, supports?: string, layer?: string, assets?: { [key: string]: Source }, assetsInfo?: Map<string, AssetInfo> }} CssModule */
-/** @typedef {{ new(dependency: CssModuleDependency): CssModule }} CssModuleConstructor */
+/** @typedef {{ new (dependency: CssModuleDependency): CssModule }} CssModuleConstructor */
 /** @typedef {Dependency & CssModuleDependency} CssDependency */
 /** @typedef {Omit<LoaderDependency, "context">} CssDependencyOptions */
-/** @typedef {{ new(loaderDependency: CssDependencyOptions, context: string | null, identifierIndex: number): CssDependency }} CssDependencyConstructor */
+/** @typedef {{ new (loaderDependency: CssDependencyOptions, context: string | null, identifierIndex: number): CssDependency }} CssDependencyConstructor */
 
 /**
  * @typedef {object} VarNames

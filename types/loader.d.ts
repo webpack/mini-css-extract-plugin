@@ -36,7 +36,7 @@ import MiniCssExtractPlugin = require("./index");
 /** @typedef {import("webpack").AssetInfo} AssetInfo */
 /** @typedef {import("webpack").NormalModule} NormalModule */
 /** @typedef {import("./index.js").LoaderOptions} LoaderOptions */
-/** @typedef {{[key: string]: string | Function }} Locals */
+/** @typedef {{ [key: string]: string | Function }} Locals */
 /** @typedef {any} EXPECTED_ANY */
 /**
  * @typedef {object} Dependency

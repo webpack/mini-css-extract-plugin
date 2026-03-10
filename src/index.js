@@ -1537,11 +1537,11 @@ class MiniCssExtractPlugin {
         if (
           module.media ||
           module.supports ||
-          typeof module.layer !== "undefined"
+          typeof module.layer === "string"
         ) {
           let atImportExtra = "";
 
-          const needLayer = typeof module.layer !== "undefined";
+          const needLayer = typeof module.layer === "string";
 
           if (needLayer) {
             atImportExtra +=
@@ -1577,7 +1577,7 @@ class MiniCssExtractPlugin {
           source.add(`@media ${module.media} {\n`);
         }
 
-        const needLayer = typeof module.layer !== "undefined";
+        const needLayer = typeof module.layer === "string";
 
         if (needLayer) {
           source.add(

@@ -82,7 +82,8 @@ describe("insert option", () => {
         plugins: [
           new MiniCssExtractPlugin({
             filename: "[name].css",
-            insert(linkTag) {
+            // eslint-disable-next-line object-shorthand
+            insert: function (linkTag) {
               const reference = document.querySelector("#existing-style");
               if (reference) {
                 reference.parentNode.insertBefore(linkTag, reference);

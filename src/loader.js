@@ -361,7 +361,7 @@ function pitch(request) {
     }
 
     this.importModule(
-      `${this._module.matchResource || this.resourcePath}.webpack[javascript/auto]!=!!!${request}`,
+      `${this._module && this._module.matchResource ? this._module.matchResource : this.resourcePath}.webpack[javascript/auto]!=!!!${request}`,
       {
         layer: options.layer,
         publicPath: /** @type {string} */ (publicPathForExtract),

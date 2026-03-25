@@ -6,7 +6,21 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
+        resourceQuery: { not: /query/ },
         use: [Self.loader, "css-loader"],
+      },
+      {
+        test: /\.css$/,
+        resourceQuery: /query/,
+        use: [
+          Self.loader,
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,

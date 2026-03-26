@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.2](https://github.com/webpack/mini-css-extract-plugin/compare/v2.10.1...v2.10.2) (2026-03-26)
+
+
+### Bug Fixes
+
+* use matchResource for importModule when available ([#1162](https://github.com/webpack/mini-css-extract-plugin/issues/1162)) ([143693e](https://github.com/webpack/mini-css-extract-plugin/commit/143693ee021ef0f87ec58bb4e161d1f2d0cf3d30))
+
 ### [2.10.1](https://github.com/webpack/mini-css-extract-plugin/compare/v2.10.0...v2.10.1) (2026-03-10)
 
 

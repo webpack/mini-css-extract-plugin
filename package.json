@@ -1,6 +1,6 @@
 {
   "name": "mini-css-extract-plugin",
-  "version": "2.10.1",
+  "version": "2.10.2",
   "description": "extracts CSS into separate files",
   "keywords": [
     "webpack",

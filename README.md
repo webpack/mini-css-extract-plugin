@@ -15,6 +15,14 @@
 
 # mini-css-extract-plugin
 
+> [!WARNING]
+>
+> **`mini-css-extract-plugin` is deprecated** — webpack extracts CSS into separate files itself and no longer needs it.
+>
+> Read the [Native CSS guide](https://webpack.js.org/guides/native-css/) and follow its [migration guide](https://webpack.js.org/guides/native-css/#3-replace-mini-css-extract-plugin).
+>
+> Existing setups keep working: built-in CSS support stays off for any `.css` rule that already has a loader, so you can migrate one rule at a time.
+
 This plugin extracts CSS into separate files. It creates a CSS file for each JS file that contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
 
 It builds on top of a new webpack v5 feature and requires webpack 5 to work.

@@ -31,8 +31,7 @@
     "commitlint",
     "unreload",
     "cnfg",
-    "tapable",
-    "codemod"
+    "tapable"
   ],
 
   "ignorePaths": [

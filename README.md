@@ -19,8 +19,9 @@
 >
 > **`mini-css-extract-plugin` is deprecated** — webpack extracts CSS into separate files itself and no longer needs it.
 >
-> [`experiments.css`](https://webpack.js.org/configuration/experiments/#experimentscss) defaults to `"auto"` since webpack 5.109.0, and extraction is the built-in default: [`output.cssFilename`](https://webpack.js.org/configuration/output/#outputcssfilename) and [`output.cssChunkFilename`](https://webpack.js.org/configuration/output/#outputcsschunkfilename) replace this plugin's `filename` and `chunkFilename`, with on-demand loading and source maps handled by the runtime.
-> Read the [Native CSS guide](https://webpack.js.org/guides/native-css/) and follow its [migration guide](https://webpack.js.org/guides/native-css/#3-replace-mini-css-extract-plugin), or run `npx codemod @webpack/css-plugins-to-native-css` to do most of the migration automatically.
+> Read the [Native CSS guide](https://webpack.js.org/guides/native-css/) and follow its [migration guide](https://webpack.js.org/guides/native-css/#3-replace-mini-css-extract-plugin).
+>
+> Existing setups keep working: built-in CSS support stays off for any `.css` rule that already has a loader, so you can migrate one rule at a time.
 
 This plugin extracts CSS into separate files. It creates a CSS file for each JS file that contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
 
